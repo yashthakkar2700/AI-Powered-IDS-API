@@ -1,0 +1,14 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - git remote add github https://${GITHUB_TOKEN}@github.com/yashthakkar2700/AI-Powered-IDS-API.git
+    - git config user.name "yashthakkar2700"
+    - git config user.email "yashthakkar2700@gmail.com"
+    - git checkout -b main  # Explicitly create the 'master' branch if needed
+    - git fetch github
+    - git push github main  # Make sure you're pushing to the correct branch
+  only:
+    - main  # Trigger only when pushing to 'master' branch
