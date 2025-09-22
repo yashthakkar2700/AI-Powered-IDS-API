@@ -1,9 +1,9 @@
 package idsapi.com.example.idsapi.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "alerts")
@@ -15,7 +15,15 @@ public class Alert {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String type;      // e.g., "Intrusion"
+
+    @Column(nullable = false)
     private String severity;  // HIGH / MEDIUM / LOW
-    private String details;   // extra info
+
+    @Column(nullable = false)
+    private String message;   // extra info
+
+    @Column(nullable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 }
