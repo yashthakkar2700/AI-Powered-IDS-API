@@ -16,9 +16,10 @@ public class AlertController {
         this.alertService = alertService;
     }
 
-    @PostMapping
-    public ResponseEntity<Alert> createAlert(@RequestBody Alert alert) {
-        return ResponseEntity.ok(alertService.createAlert(alert));
+    // ✅ Create alert for a specific log entry
+    @PostMapping("/log/{logEntryId}")
+    public ResponseEntity<Alert> createAlert(@PathVariable Long logEntryId, @RequestBody Alert alert) {
+        return ResponseEntity.ok(alertService.createAlert(alert, logEntryId));
     }
 
     @GetMapping
@@ -29,6 +30,12 @@ public class AlertController {
     @GetMapping("/{id}")
     public ResponseEntity<Alert> getAlertById(@PathVariable Long id) {
         return ResponseEntity.ok(alertService.getAlertById(id));
+    }
+
+    // Get alerts for a specific log entry
+    @GetMapping("/log/{logEntryId}")
+    public ResponseEntity<List<Alert>> getAlertsByLogEntry(@PathVariable Long logEntryId) {
+        return ResponseEntity.ok(alertService.getAlertsByLogEntry(logEntryId));
     }
 
     @DeleteMapping("/{id}")

@@ -26,4 +26,8 @@ public class Alert {
 
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    @ManyToOne
+    @JoinColumn(name = "log_entry_id", nullable = false)
+    private LogEntry logEntry;
 }

@@ -3,6 +3,8 @@ package idsapi.com.example.idsapi.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -18,6 +20,9 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<LogEntry> logFiles;
 
     // Getter & Setter
     public Long getId() { return id; }
