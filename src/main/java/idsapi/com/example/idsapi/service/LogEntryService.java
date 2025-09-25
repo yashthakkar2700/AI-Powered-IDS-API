@@ -26,6 +26,10 @@ public class LogEntryService {
         return logEntryRepository.save(logEntry);
     }
 
+    public LogEntry save(LogEntry logEntry) {
+        return logEntryRepository.save(logEntry);
+    }
+
     public List<LogEntry> getAllLogs() {
         return logEntryRepository.findAll();
     }
