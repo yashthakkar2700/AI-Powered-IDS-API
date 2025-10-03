@@ -1,5 +1,6 @@
 package idsapi.com.example.idsapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore   // prevent infinite recursion
     private List<LogEntry> logFiles;
 
     // Getter & Setter

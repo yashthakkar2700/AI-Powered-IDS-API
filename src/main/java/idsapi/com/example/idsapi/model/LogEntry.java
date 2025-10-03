@@ -1,5 +1,6 @@
 package idsapi.com.example.idsapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -40,5 +41,6 @@ public class LogEntry {
 
     // One log entry can have multiple alerts
     @OneToMany(mappedBy = "logEntry", cascade = CascadeType.ALL)
+    @JsonIgnore   // prevent recursion Alert → LogEntry → Alerts → LogEntry ...
     private List<Alert> alerts;
 }

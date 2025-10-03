@@ -4,6 +4,7 @@
 ## Steps/notes to run Project:
 - start Xampp
 - **Run** IdsapiApplication.java (main file) from Intellij right-click run
+- Open docker desktop app from start menu
 - Open powerShell on 'docker-compose.yml' level:
 ````D:\programming\web develpement\Backend\Java-full-stack\IDS````
 - Command to run **docker** (for Zookeeper, kafka, ML-api):
